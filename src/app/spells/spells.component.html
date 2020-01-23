@@ -1,4 +1,4 @@
-<div class="" *ngFor="let spell of spells">
+<div class="spell-card" *ngFor="let spell of spells">
   <div class="">
     <h3 (click)="showSpell(spell.id)">{{spell.name}}</h3>
     <div class="" *ngIf="shown === spell.id">
@@ -26,13 +26,13 @@
           <span *ngIf="spell.duration > 0">{{spell.duration}}</span>
           <span> {{spell.duration === 1 ? spell.duration_unit.substring(0, spell.duration_unit.length - 1) : spell.duration_unit}}</span>
         </li>
-        <li>Sources:
-          <span class="" *ngFor="let source of spellSources(spell.sources_rels)">
-            {{source}}
-          </span>
-        </li>
       </ul>
       <div class="" [innerHTML]="spell.description"></div>
+      <div class="">Source:
+        <span class="" *ngFor="let source of spellSources(spell.sources_rels)">
+          {{source}}
+        </span>
+      </div>
     </div>
   </div>
 </div>
