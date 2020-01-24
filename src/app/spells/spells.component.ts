@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup, FormBuilder} from '@angular/forms';
+import * as _ from 'lodash';
+
 import SpellDetails from './spells.json';
 
 @Component({
@@ -9,58 +12,94 @@ import SpellDetails from './spells.json';
 export class SpellsComponent implements OnInit {
   SpellDetails;
   shown;
-  spells;
-  constructor() {
-    this.SpellDetails = SpellDetails;
+  cardData;
+  spellsOriginal;
+  spellsByLevel = [[],[],[],[],[],[],[],[],[],[]];
+  hidden = [];
+  selectedLevels = [];
+  filterForm;
+  constructor(private formBuilder: FormBuilder) {
+    this.SpellDetails = _.cloneDeep(SpellDetails);
+    this.spellsOriginal = _.cloneDeep(SpellDetails.spells);
+    const { classes, sources, spell_schools } = SpellDetails;
+    this.cardData = { classes, sources, spell_schools };
+    this.getSpellsByLevel(this.spellsOriginal);
+
+    this.filterForm = new FormGroup({
+      class: new FormControl(''),
+      name: new FormControl(''),
+      specialization: new FormControl(''),
+    });
+
+    this.onChanges();
   }
 
-  ngOnInit() {
-    console.log(this.SpellDetails)
-    this.spells = this.SpellDetails.spells;
+  ngOnInit() {}
+
+  onChanges() {
+    this.filterForm.valueChanges.subscribe(val => {
+      this.filterSpells(this.filterForm.value);
+    });
   }
 
-  showSpell(id) {
-    if (this.shown === id) {
-      this.shown = null;
+  selectLevel(level) {
+    const idx = this.selectedLevels.indexOf(level);
+    if (idx === -1) {
+      this.selectedLevels.push(level);
     } else {
-      this.shown = id;
+      this.selectedLevels.splice(idx, 1);
     }
+  }
+
+  showLevel(level) {
+    const idx = this.hidden.indexOf(level);
+    if (idx === -1) {
+      this.hidden.push(level);
+    } else {
+      this.hidden.splice(idx, 1);
+    }
+  }
+
+  filterSpells(filters) {
+    let filteredSpells = _.cloneDeep(SpellDetails.spells);
+    if (filters.class) {
+      const classSpellIds = this.SpellDetails.classes.find(e => e.id === filters.class).spells_ids;
+      filteredSpells = filteredSpells.filter(e => classSpellIds.includes(e.id));
+    }
+    // if (filters.specialization) {
+    //   const classSpellIds = this.SpellDetails.specializations.find(e => e.id === filters.specialization).spells_ids;
+    //   filteredSpells = filteredSpells.filter(e => classSpellIds.includes(e.id));
+    // }
+    if (filters.name) {
+      filteredSpells = filteredSpells.filter(e => e.name.toLowerCase().includes(filters.name.toLowerCase()));
+    }
+    if (filters.levels) {
+      // console.log(filters.levels)
+      // filteredSpells = filteredSpells.filter(e => e.name.toLowerCase().includes(filters.name.toLowerCase()));
+    }
+    this.getSpellsByLevel(filteredSpells);
+  }
+
+  getSpellsByLevel(spells) {
+    this.spellsByLevel = [[],[],[],[],[],[],[],[],[],[]];
+    spells.forEach(spell => {
+      this.spellsByLevel[spell.level].push(spell);
+    });
+    this.spellsByLevel.forEach((spellLevel) => {
+      spellLevel.sort((a, b) => a.name > b.name ? 1 : -1)
+    });
   }
 
   spellLevelSuffix(level) {
     if (level >= 4) {
-      return 'th';
+      return `${level}th Level Spells`;
     } if (level === 3) {
-      return 'rd';
+      return `${level}rd Level Spells`;
     } if (level === 2) {
-      return 'nd';
+      return `${level}nd Level Spells`;
+    } if (level === 1) {
+      return `${level}st Level Spells`;
     }
-    return 'st';
-  }
-
-  spellSchool(id) {
-    return this.SpellDetails.spell_schools.find(item => id === item.id).name.replace(
-        /\w\S*/g,
-        function(txt) {
-            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-        }
-    );
-  }
-
-  spellClasses(id) {
-    const found = this.SpellDetails.klasses.filter(e => e.spells_ids.includes(id));
-    return found.map(e => e.name.replace(
-        /\w\S*/g,
-        function(txt) {
-            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-        }
-    )).join(', ');
-  }
-
-  spellSources(rels) {
-    return rels.map(e => {
-      const source = this.SpellDetails.sources.find(s => s.id === e.source_id);
-      return `${source.name} page ${e.page}`
-    });
+    return 'Cantrips'
   }
 }

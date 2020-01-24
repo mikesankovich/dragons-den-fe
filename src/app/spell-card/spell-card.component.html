@@ -1,0 +1,34 @@
+<div [ngClass]="{'spell-card': shown}">
+  <span *ngIf="!shown" (click)="showSpell()" class="spell-name">{{spell.name}}</span>
+  <div class="" *ngIf="shown">
+    <h3 class="spell-name-card">{{spell.name}}</h3>
+    <span (click)="showSpell()" class="close">x</span>
+    <div class="">
+      <span *ngIf="spell.level > 0">{{spell.level}}{{spellLevelSuffix(spell.level)}}-level {{spellSchool(spell.spell_school_id)}} spell</span>
+      <span *ngIf="spell.level === 0">{{spellSchool(spell.spell_school_id)}} Cantrip</span>
+      <span *ngIf="spell.is_ritual"> (ritual)</span>
+    </div>
+    <div class="">
+      Classes: {{spellClasses(spell.id)}}
+    </div>
+    <ul>
+      <li><b>Casting Time</b>:
+        <span>{{spell.casting_time}}</span>
+        <span> {{spell.casting_time === 1 ? spell.casting_time_unit.substring(0, spell.casting_time_unit.length - 1) : spell.casting_time_unit}}</span>
+      </li>
+      <li><b>Range</b>: {{spell.range > 0 ? spell.range : ''}} {{spell.range_unit}}</li>
+      <li><b>Components</b>:
+        <span *ngIf="spell.does_have_verbal_component"> V </span>
+        <span *ngIf="spell.does_have_somatic_component"> S </span>
+        <span *ngIf="spell.material_component"> M ({{spell.material_component}}<span *ngIf="spell.material_component_cost"> worth at least {{spell.material_component_cost}}<span *ngIf="spell.is_material_component_consumed"> which the spell consumes</span></span>)</span>
+      </li>
+      <li><b>Duration</b>:
+        <span *ngIf="spell.does_need_concentration">Concentration, </span>
+        <span *ngIf="spell.duration > 0">{{spell.duration}}</span>
+        <span> {{spell.duration === 1 ? spell.duration_unit.substring(0, spell.duration_unit.length - 1) : spell.duration_unit}}</span>
+      </li>
+    </ul>
+    <div class="" [innerHTML]="spell.description"></div>
+    <div class=""><b>Source</b>: {{spellSources(spell.sources_rels)}}</div>
+  </div>
+</div>

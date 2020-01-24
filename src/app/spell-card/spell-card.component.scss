@@ -1,0 +1,19 @@
+.spell-name {    
+  cursor: pointer;
+  &:hover {
+    color: #555;
+    text-decoration: underline;
+  }
+}
+.spell-card {
+  padding: 8px;
+  border: 1px solid black;
+  margin: 4px;
+  .spell-name-card {
+    display: inline-block;
+  }
+  .close {
+    color: red;
+    cursor: pointer;
+  }
+}
