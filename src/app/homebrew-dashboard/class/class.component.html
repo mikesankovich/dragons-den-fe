@@ -116,7 +116,19 @@
     </div>
   </div>
   <div class="" *ngFor="let feature of classLevelFeatures">
-    <h3>{{feature.name}}</h3>
+    <h5>{{feature.name}}</h5>
     <p>{{feature.description}}</p>
+  </div>
+  <div class="">
+    <h2>{{subClassName}}</h2>
+    <div class="subclasses">
+      <div class="subclass feature" *ngFor="let subclass of subClasses">
+        <h3>{{subclass.name}}</h3>
+        <div class="subclass-progressions feature" *ngFor="let prog of subclass.progressions">
+          <h5>{{prog.name}}</h5>
+          <p>{{prog.description}}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

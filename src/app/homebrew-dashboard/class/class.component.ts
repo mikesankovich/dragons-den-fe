@@ -61,20 +61,20 @@ export class ClassComponent implements OnInit {
 
     this.tableRows = [
       { level: 1, proficiency: 2, features: 'Spellcasting, Life Drain', cantrips: 2, spells: 2, slots: [2] },
-      { level: 2, proficiency: 2, features: 'Necromancer Occult', cantrips: 2, spells: 3, slots: [3] },
+      { level: 2, proficiency: 2, features: 'Necromancer Cult', cantrips: 2, spells: 3, slots: [3] },
       { level: 3, proficiency: 2, features: 'Soul Harvest', cantrips: 2, spells: 4, slots: [4, 2] },
       { level: 4, proficiency: 2, features: 'Ability Score Improvement', cantrips: 3, spells: 5, slots: [4, 3] },
       { level: 5, proficiency: 3, features: 'Spontaneous Unburial', cantrips: 3, spells: 6, slots: [4, 3, 2] },
-      { level: 6, proficiency: 3, features: 'Occult Feature', cantrips: 3, spells: 7, slots: [4, 3, 3] },
+      { level: 6, proficiency: 3, features: 'Cult Feature', cantrips: 3, spells: 7, slots: [4, 3, 3] },
       { level: 7, proficiency: 3, features: 'Siphon Soul', cantrips: 3, spells: 8, slots: [4, 3, 3, 1] },
       { level: 8, proficiency: 3, features: 'Ability Score Improvement', cantrips: 3, spells: 9, slots: [4, 3, 3, 2] },
       { level: 9, proficiency: 4, features: '--', cantrips: 3, spells: 10, slots: [4, 3, 3, 3, 1] },
-      { level: 10, proficiency: 4, features: 'Occult Feature', cantrips: 3, spells: 11, slots: [4, 3, 3, 3, 2] },
-      { level: 11, proficiency: 4, features: 'Animate Major Undead improvement', cantrips: 4, spells: 12, slots: [4, 3, 3, 3, 2, 1] },
+      { level: 10, proficiency: 4, features: 'Cult Feature', cantrips: 3, spells: 11, slots: [4, 3, 3, 3, 2] },
+      { level: 11, proficiency: 4, features: '--', cantrips: 4, spells: 12, slots: [4, 3, 3, 3, 2, 1] },
       { level: 12, proficiency: 4, features: 'Ability Score Improvement', cantrips: 4, spells: 12, slots: [4, 3, 3, 3, 2, 1] },
       { level: 13, proficiency: 5, features: '--', cantrips: 4, spells: 13, slots: [4, 3, 3, 3, 2, 1, 1] },
-      { level: 14, proficiency: 5, features: 'Occult feature, Swift Undead', cantrips: 4, spells: 13, slots: [4, 3, 3, 3, 2, 1, 1] },
-      { level: 15, proficiency: 5, features: 'Animate Major Undead improvement', cantrips: 4, spells: 14, slots: [4, 3, 3, 3, 2, 1, 1, 1] },
+      { level: 14, proficiency: 5, features: 'Cult feature, Swift Undead', cantrips: 4, spells: 13, slots: [4, 3, 3, 3, 2, 1, 1] },
+      { level: 15, proficiency: 5, features: '--', cantrips: 4, spells: 14, slots: [4, 3, 3, 3, 2, 1, 1, 1] },
       { level: 16, proficiency: 5, features: 'Ability Score Improvement', cantrips: 4, spells: 14, slots: [4, 3, 3, 3, 2, 1, 1, 1] },
       { level: 17, proficiency: 6, features: '--', cantrips: 4, spells: 15, slots: [4, 3, 3, 3, 2, 1, 1, 1, 1] },
       { level: 18, proficiency: 6, features: 'Plague Doctor', cantrips: 4, spells: 15, slots: [4, 3, 3, 3, 2, 1, 1, 1, 1] },
@@ -98,8 +98,8 @@ export class ClassComponent implements OnInit {
         name: 'Life Drain', description: 'Starting at 1st level, your touch can siphon the life force of others to bolster your own. As an action, you can touch a living creature to make a melee spell attack against them, dealing necrotic damage equal to 1d4 + your Charisma modifier on a hit. You gain temporary hit points equal to the amount of necrotic damage dealt. If this feature kills the creature, you gain twice as many temporary hit points from using this feature. The damage increases by 1d4 when you reach 5th level (2d4), 11th level (3d4), and 17th level (4d4). You may use this feature a number of times equal to your Charisma modifier(minimum one) and you regain all uses of this feature at the end of a long rest.'
       },
       {
-        name: 'Necromancer Occult',
-        description: 'At 2nd level, you choose an occult which specializes you in your dealings with death: Keeper, Reaper, Undertaker, and Witch Doctor each of which is detailed at the end of the class description. Your occult grants you features when you choose it at 2nd level and additional features at 6th, 10th, and 14th level.'
+        name: 'Necromancer Cult',
+        description: 'At 2nd level, you choose a Cult which specializes you in your dealings with death: Keeper, Reaper, Undertaker, and Witch Doctor each of which is detailed at the end of the class description. Your Cult grants you features when you choose it at 2nd level and additional features at 6th, 10th, and 14th level.'
       },
       {
         name: 'Soul Harvest',
@@ -129,6 +129,70 @@ export class ClassComponent implements OnInit {
         name: 'Stitcher of Flesh',
         description: 'At the 20th level you learn to put a stop to the very process of death. You learn the spell True Resurrection. It does not count against your spells known, and if you already know it you may select a new spell from the wizard spell list. Once every 10 days you may cast True Resurrection with a Casting Time of 1 action.'
       }
+    ];
+
+    this.subClassName = 'Necromancer Cults';
+    this.subClasses = [
+      {
+        name: 'The Stitchers', progressions: [
+          {
+            name: 'Expanded Knowledge',
+            description: 'Beginning at the 2nd level, when you choose this cult, you learn two twist your knowledge of death into knowledge of healing. You learn the Cure Wounds spell (without it counting against your spells known) and add the following spells to the list of spells you can learn whenever you take a Necromancer spell: Healing Word, Cure Wounds, Lesser Restoration, Mass Healing Word, Revivify, Greater Restoration, Mass Cure Wounds, Raise Dead, Heal, Regenerate, Resurrection, Mass Heal, Power Word Heal, True Resurrection'
+          },
+          {
+            name: 'Stitch Flesh',
+            description: 'Beginning at the 6th level, so long as your target has at least 1 hp, your healing spells can target undead, even if the spell says you can\'t'
+          },
+          {
+            name: 'Transfer Life',
+            description: 'Beginning at the 10th level, your Life Drain now has a range of 30 feet. When you use Life Drain you can now choose an ally you can see within range to receive the temporary hitpoints in your place.'
+          },
+          {
+            name: 'Draw Upon Death',
+            description: 'Beginning at the 14th level, by twisting the fabric of life and death, you have learned to benefit from the healing you give unto others. Whenever you heal someone with a spell you heal an amount equal to the spell slot used + your charisma modifier.'
+          }
+        ]
+      },
+      {
+        name: 'Cult of Flesh', progressions: [
+          {
+            name: 'Life Unto Flesh',
+            description: 'Beginning at the 2nd level, your devotion to the Cult of Flesh has taught you to stitch the very flesh of other beings into your own for your own benefit. So long as you are not wearing armor, your base AC becomes 13 and you are resistant to Poison damage.'
+          },
+          {
+            name: 'Deathly Constitution',
+            description: 'Beginning at the 6th level, you have advantage on Constitution Saving throws and your hit dice becomes 1d8 instead of 1d6. This does not retroactively change your Maximum Hit Points.'
+          },
+          {
+            name: 'Improved Life Drain',
+            description: 'Beginning at the 10th level, your Life Drain can now be used with your weapon. The damage dice for this ability now become the damage dice of the weapon you use for the attack. You become proficient in two one-handed martial weapons that do not have the versatile property.'
+          },
+          {
+            name: 'Natural Armor',
+            description: 'Beginning at the 14th level, if you are not wearing armor you may add your constitution modifier to your total AC.'
+          }
+        ]
+      },
+      {
+        name: 'Cult of Decay', progressions: [
+          {
+            name: 'Rotting Touch',
+            description: 'Beginning at the 2nd level, your understanding to rot and decay allows you to shrug off damage that threatens to rot your body. You are resistant to poison and necrotic damage and have advantage on saving throws involving poison.'
+          },
+          {
+            name: 'Sloughing Flesh',
+            description: 'Beginning at the 6th level, whenever you hit a creature with your Life Drain ability, they take 1d4 + your charisma modifier necrotic damage at the end of their next turn.'
+          },
+          {
+            name: 'Desecrate Ground',
+            description: 'Beginning at the 10th level, you cause rot and decay to spread in a 30 foot radius sphere from a point centered on you. All creatures in the area who enter the area start their turn in the area must make a constitution saving throw against your Spell Save DC. They take 4d8 necrotic damage, half damage on a save. On a failed save, their next attack is made at disadvantage. Once a creature successfully saves against this ability, they are immune from its effects for 8 hours. The area remains desecrated for 1 minute. Once used, you cannot use this ability again until you take a long rest.'
+          },
+          {
+            name: 'Drain Life and Death',
+            description: 'Beginning at the 14th level, you regain all uses of Life Drain after a short rest and Drain Life now has a range of 30 feet.'
+          }
+        ]
+      }
     ]
   }
 
@@ -139,6 +203,8 @@ export class ClassComponent implements OnInit {
   spellSaveDC;
   spellAttackModifier;
   classLevelFeatures = []
+  subClassName;
+  subClasses = [];
 
   // your healing spells can affect undead, even if the spell says they cannot.
 
