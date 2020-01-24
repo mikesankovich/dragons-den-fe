@@ -1,46 +1,46 @@
 <div class="container">
-  <h1>{{title}}</h1>
-  <p>{{classDescription}}</p>
+  <h1>{{class.title}}</h1>
+  <p>{{class.classDescription}}</p>
 
-  <h2>{{creatingHeader}}</h2>
-  <p>{{creatingDescription}}</p>
+  <h2>{{class.creatingHeader}}</h2>
+  <p>{{class.creatingDescription}}</p>
 
   <h5>Quick Build</h5>
-  <p>{{quickBuildDescription}}</p>
+  <p>{{class.quickBuildDescription}}</p>
 
   <div class="" id="class-features">
     <div class="heading feature">
-      <h3>{{classFeaturesHeading}}</h3>
-      <p>As a {{title}} you gain the following features.</p>
+      <h3>{{class.classFeaturesHeading}}</h3>
+      <p>As a {{class.title}} you gain the following features.</p>
     </div>
     <div class="hitpoints feature">
       <h5>Hit Points</h5>
       <div class="">
-        <b>Hit Dice</b>: 1d{{hitDice}} per {{title}} level
+        <b>Hit Dice</b>: 1d{{class.hitDice}} per {{class.title}} level
       </div>
       <div class="">
-        <b>Hit Points at 1st Level:</b> {{hitDice}} + Constitution modifier
+        <b>Hit Points at 1st Level:</b> {{class.hitDice}} + Constitution modifier
       </div>
       <div class="">
-        <b>Hit Points at Higher Levels:</b> 1d{{hitDice}} (or {{avg}}) + Constitution modifier per {{title}} level after 1st
+        <b>Hit Points at Higher Levels:</b> 1d{{class.hitDice}} (or {{avg}}) + Constitution modifier per {{class.title}} level after 1st
       </div>
     </div>
     <div class="proficiencies feature">
       <h5>Proficiencies</h5>
       <div class="">
-        <b>Armor:</b> {{armor}}
+        <b>Armor:</b> {{class.armor}}
       </div>
       <div class="">
-        <b>Weapons:</b> {{weapons}}
+        <b>Weapons:</b> {{class.weapons}}
       </div>
       <div class="">
-        <b>Tools:</b> {{tools}}
+        <b>Tools:</b> {{class.tools}}
       </div>
       <div class="">
-        <b>Saving Throws:</b> {{savingThrows}}
+        <b>Saving Throws:</b> {{class.savingThrows}}
       </div>
       <div class="">
-        <b>Skills:</b> {{skills}}
+        <b>Skills:</b> {{class.skills}}
       </div>
     </div>
     <div class="equipment feature">
@@ -48,7 +48,7 @@
       <p>You start with the following equipment, in addition to the equipment granted by your background:</p>
       <div class="equipment-set">
         <ul>
-          <li *ngFor="let equip of equipment">{{equip}}</li>
+          <li *ngFor="let equip of class.equipment">{{equip}}</li>
         </ul>
       </div>
     </div>
@@ -57,10 +57,10 @@
   <div class="class-table">
     <table class="table table-striped">
       <thead>
-        <th *ngFor="let h of headers">{{h}}</th>
+        <th *ngFor="let h of class.headers">{{h}}</th>
       </thead>
       <tbody>
-        <tr *ngFor="let row of tableRows">
+        <tr *ngFor="let row of class.tableRows">
           <td>{{spellLevelSuffix(row.level)}}</td>
           <td>+{{row.proficiency}}</td>
           <td>{{row.features}}</td>
@@ -81,48 +81,48 @@
   </div>
   <div class="spellcasting">
     <h3>Spellcasting</h3>
-    <p>{{spellCastingDescription}}</p>
+    <p>{{class.spellCastingDescription}}</p>
     <div class="feature">
       <h5>Cantrips</h5>
-      <p>{{cantripsDescription}}</p>
+      <p>{{class.cantripsDescription}}</p>
     </div>
     <div class="feature">
       <h5>Spell Slots</h5>
-      <p>{{spellSlotDescription}}</p>
+      <p>{{class.spellSlotDescription}}</p>
     </div>
     <div class="feature">
       <h5>Spells Known of 1st Level and Higher</h5>
-      <p>{{spellsKnownDescription}}</p>
+      <p>{{class.spellsKnownDescription}}</p>
     </div>
     <div class="feature">
       <h5>Spellcasting Ability</h5>
-      <p>{{spellCastingAbility}}</p>
+      <p>{{class.spellCastingAbility}}</p>
       <div class="center">
         <div class="">
-          <b>Spell save DC</b> {{spellSaveDC}}
+          <b>Spell save DC</b> {{class.spellSaveDC}}
         </div>
         <div class="">
-          <b>Spell attack modifier</b> {{spellAttackModifier}}
+          <b>Spell attack modifier</b> {{class.spellAttackModifier}}
         </div>
       </div>
     </div>
     <div class="feature">
       <h5>Ritual Casting</h5>
-      <p>You can cast a {{title}} spell as a ritual if it is a spell you know and that spell has the ritual tag.</p>
+      <p>You can cast a {{class.title}} spell as a ritual if it is a spell you know and that spell has the ritual tag.</p>
     </div>
     <div class="feature">
       <h5>Spellcasting Focus</h5>
-      <p>You can use an arcane focus as a spellcasting focus for your {{title}} spells.</p>
+      <p>You can use an arcane focus as a spellcasting focus for your {{class.title}} spells.</p>
     </div>
   </div>
-  <div class="" *ngFor="let feature of classLevelFeatures">
+  <div class="" *ngFor="let feature of class.classLevelFeatures">
     <h5>{{feature.name}}</h5>
     <p>{{feature.description}}</p>
   </div>
   <div class="">
-    <h2>{{subClassName}}</h2>
+    <h2>{{class.subClassName}}</h2>
     <div class="subclasses">
-      <div class="subclass feature" *ngFor="let subclass of subClasses">
+      <div class="subclass feature" *ngFor="let subclass of class.subClasses">
         <h3>{{subclass.name}}</h3>
         <div class="subclass-progressions feature" *ngFor="let prog of subclass.progressions">
           <h5>{{prog.name}}</h5>
