@@ -60,26 +60,26 @@ export class ClassComponent implements OnInit {
     ];
 
     this.tableRows = [
-      { level: 1, proficiency: 2, features: 'Spellcasting, Life Tap', cantrips: 2, spells: 2, slots: [2] },
+      { level: 1, proficiency: 2, features: 'Spellcasting, Life Drain', cantrips: 2, spells: 2, slots: [2] },
       { level: 2, proficiency: 2, features: 'Necromancer Occult', cantrips: 2, spells: 3, slots: [3] },
       { level: 3, proficiency: 2, features: 'Soul Harvest', cantrips: 2, spells: 4, slots: [4, 2] },
       { level: 4, proficiency: 2, features: 'Ability Score Improvement', cantrips: 3, spells: 5, slots: [4, 3] },
       { level: 5, proficiency: 3, features: 'Spontaneous Unburial', cantrips: 3, spells: 6, slots: [4, 3, 2] },
       { level: 6, proficiency: 3, features: 'Occult Feature', cantrips: 3, spells: 7, slots: [4, 3, 3] },
-      { level: 7, proficiency: 3, features: 'Animate Major Undead', cantrips: 3, spells: 8, slots: [4, 3, 3, 1] },
+      { level: 7, proficiency: 3, features: 'Siphon Soul', cantrips: 3, spells: 8, slots: [4, 3, 3, 1] },
       { level: 8, proficiency: 3, features: 'Ability Score Improvement', cantrips: 3, spells: 9, slots: [4, 3, 3, 2] },
       { level: 9, proficiency: 4, features: '--', cantrips: 3, spells: 10, slots: [4, 3, 3, 3, 1] },
       { level: 10, proficiency: 4, features: 'Occult Feature', cantrips: 3, spells: 11, slots: [4, 3, 3, 3, 2] },
       { level: 11, proficiency: 4, features: 'Animate Major Undead improvement', cantrips: 4, spells: 12, slots: [4, 3, 3, 3, 2, 1] },
       { level: 12, proficiency: 4, features: 'Ability Score Improvement', cantrips: 4, spells: 12, slots: [4, 3, 3, 3, 2, 1] },
       { level: 13, proficiency: 5, features: '--', cantrips: 4, spells: 13, slots: [4, 3, 3, 3, 2, 1, 1] },
-      { level: 14, proficiency: 5, features: 'Occult feature, Ritualistic Unburial', cantrips: 4, spells: 13, slots: [4, 3, 3, 3, 2, 1, 1] },
+      { level: 14, proficiency: 5, features: 'Occult feature, Swift Undead', cantrips: 4, spells: 13, slots: [4, 3, 3, 3, 2, 1, 1] },
       { level: 15, proficiency: 5, features: 'Animate Major Undead improvement', cantrips: 4, spells: 14, slots: [4, 3, 3, 3, 2, 1, 1, 1] },
       { level: 16, proficiency: 5, features: 'Ability Score Improvement', cantrips: 4, spells: 14, slots: [4, 3, 3, 3, 2, 1, 1, 1] },
       { level: 17, proficiency: 6, features: '--', cantrips: 4, spells: 15, slots: [4, 3, 3, 3, 2, 1, 1, 1, 1] },
-      { level: 18, proficiency: 6, features: 'Macabre', cantrips: 4, spells: 15, slots: [4, 3, 3, 3, 2, 1, 1, 1, 1] },
+      { level: 18, proficiency: 6, features: 'Plague Doctor', cantrips: 4, spells: 15, slots: [4, 3, 3, 3, 2, 1, 1, 1, 1] },
       { level: 19, proficiency: 6, features: 'Ability Score Improvement', cantrips: 4, spells: 15, slots: [4, 3, 3, 3, 2, 2, 1, 1, 1] },
-      { level: 20, proficiency: 6, features: 'Séance', cantrips: 4, spells: 15, slots: [4, 3, 3, 3, 2, 2, 2, 1, 1] },
+      { level: 20, proficiency: 6, features: 'Stitcher of Flesh', cantrips: 4, spells: 15, slots: [4, 3, 3, 3, 2, 2, 2, 1, 1] },
     ]
 
     this.spellCastingDescription = 'You draw on the essence of life and death itself to fuel your spells.';
@@ -92,6 +92,44 @@ export class ClassComponent implements OnInit {
     this.spellCastingAbility = 'Charisma is your spellcasting ability for your necromancer spells, since the power of your magic relies on your ability to project your will into the world. You use your Charisma whenever a spell refers to your spellcasting ability. In addition, you use your Charisma modifier when setting the saving throw DC for a necromancer spell you cast and when making an attack roll with one.';
     this.spellSaveDC = '= 8 + your proficiency bonus + your Charisma modifier';
     this.spellAttackModifier = '= your proficiency bonus + your Charisma modifier';
+
+    this.classLevelFeatures = [
+      {
+        name: 'Life Drain', description: 'Starting at 1st level, your touch can siphon the life force of others to bolster your own. As an action, you can touch a living creature to make a melee spell attack against them, dealing necrotic damage equal to 1d4 + your Charisma modifier on a hit. You gain temporary hit points equal to the amount of necrotic damage dealt. If this feature kills the creature, you gain twice as many temporary hit points from using this feature. The damage increases by 1d4 when you reach 5th level (2d4), 11th level (3d4), and 17th level (4d4). You may use this feature a number of times equal to your Charisma modifier(minimum one) and you regain all uses of this feature at the end of a long rest.'
+      },
+      {
+        name: 'Necromancer Occult',
+        description: 'At 2nd level, you choose an occult which specializes you in your dealings with death: Keeper, Reaper, Undertaker, and Witch Doctor each of which is detailed at the end of the class description. Your occult grants you features when you choose it at 2nd level and additional features at 6th, 10th, and 14th level.'
+      },
+      {
+        name: 'Soul Harvest',
+        description: 'Starting at 3rd level, by reaping life you are able to claim a fraction of those unfortunate creatures souls to regenerate your wounds and fortify your body. When you or an undead under your control reduce a Hostile creature to 0 Hit Points, you gain Temporary Hit Points equal to your Charisma modifier + your Necromancer level (minimum of 1).'
+      },
+      {
+        name: 'Ability Score Increase',
+        description: 'When you reach 4th level, and again at 8th, 12th, 16th, and 19th level, you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can\'t increase an ability score above 20 using this feature.'
+      },
+      {
+        name: 'Spontaneous Unburial',
+        description: 'Starting at 5th level, your understanding of necrotic and negative energies allows you to raise the dead with ease. You learn the spell Animate Dead (it does not count against your spells known) and may cast it as a ritual once per long rest. Subsequent uses require a spell slot as usual.'
+      },
+      {
+        name: 'Siphon Soul',
+        description: 'Starting at the 7th level, Your connection to your undead minions allows you to transfer health to your risen allies. As a bonus action, you can fully deplete your temporary hitpoints to heal an undead ally that you brought to life with Animate Undead for that amount. Once per long rest as an action you can destroy your Animate Undead ally to give yourself temporary hitpoints equal to your Necromancer Level + your Charisma Modifier.'
+      },
+      {
+        name: 'Swift Undead',
+        description: 'Starting at the 14th level, as a reaction, you can command one undead under your control within 5 ft of you to intercept a melee or melee spell attack made against you. The attack now targets the undead minion and the attack role is now compared to the undead’s AC.'
+      },
+      {
+        name: 'Plague Doctor',
+        description: 'At the 18th level, you are no longer bound by your mortal flesh. You now age at a tenth of your normal rate, you cannot be magically aged or put to sleep, and you are immune to necrotic damage.'
+      },
+      {
+        name: 'Stitcher of Flesh',
+        description: 'At the 20th level you learn to put a stop to the very process of death. You learn the spell True Resurrection. It does not count against your spells known, and if you already know it you may select a new spell from the wizard spell list. Once every 10 days you may cast True Resurrection with a Casting Time of 1 action.'
+      }
+    ]
   }
 
   cantripsDescription;
@@ -100,6 +138,7 @@ export class ClassComponent implements OnInit {
   spellCastingAbility;
   spellSaveDC;
   spellAttackModifier;
+  classLevelFeatures = []
 
   // your healing spells can affect undead, even if the spell says they cannot.
 

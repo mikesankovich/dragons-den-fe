@@ -115,4 +115,8 @@
       <p>You can use an arcane focus as a spellcasting focus for your {{title}} spells.</p>
     </div>
   </div>
+  <div class="" *ngFor="let feature of classLevelFeatures">
+    <h3>{{feature.name}}</h3>
+    <p>{{feature.description}}</p>
+  </div>
 </div>
