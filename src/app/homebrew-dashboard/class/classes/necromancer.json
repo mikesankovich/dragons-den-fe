@@ -60,7 +60,7 @@
     },
     {
       "name": "Necromancer Cult",
-      "description": "At 2nd level, you choose a Cult which specializes you in your dealings with death: The Stiches, Cult of Flesh, Cult of Decay, and Cult of Bones each of which is detailed at the end of the class description. Your Cult grants you features when you choose it at 2nd level and additional features at 6th, 10th, and 14th level."
+      "description": "At 2nd level, you choose a Cult which specializes you in your dealings with death: The Stiches, Cult of Flesh, Cult of Decay, and Cult of Bone each of which is detailed at the end of the class description. Your Cult grants you features when you choose it at 2nd level and additional features at 6th, 10th, and 14th level."
     },
     {
       "name": "Soul Harvest",
@@ -84,7 +84,7 @@
     },
     {
       "name": "Death From Above",
-      "description": "Starting at the 15th level, you can use a bonus action to manifest a pair of wings from your back. While the wings are present, you have a flying speed of 30 feet. The wings last until you’re incapacitated, you die, or you dismiss them as a bonus action. The cult you chose determines the appearance of the wings: Black Angel Wings for The Stitchers, bone wings for Cult of Bones, bat wings for Cult of Flesh, or tattered eagle wings for Cult of Decay."
+      "description": "Starting at the 15th level, you can use a bonus action to manifest a pair of wings from your back. While the wings are present, you have a flying speed of 30 feet. The wings last until you’re incapacitated, you die, or you dismiss them as a bonus action. The cult you chose determines the appearance of the wings: Black Angel Wings for The Stitchers, bone wings for Cult of Bone, bat wings for Cult of Flesh, or tattered eagle wings for Cult of Decay."
     },
     {
       "name": "Plague Doctor",
@@ -154,6 +154,26 @@
         {
           "name": "Drain Life and Death",
           "description": "Beginning at the 14th level, you regain all uses of Life Drain after a short rest and Drain Life now has a range of 30 feet."
+        }
+      ]
+    },
+    {
+      "name": "Cult of Bone", "progressions": [
+        {
+          "name": "Deadly Resolve",
+          "description": "Beginning at the 2nd level, your kinship with death has hardened you in body and mind. You have advantage against saving throws against being charmed and frightened. You have resistance to radiant damage."
+        },
+        {
+          "name": "Deathly Champion",
+          "description": "Beginning at the 6th level, when you cast Animate Dead, if you have not chosen a champion since ending your last long rest, you may designate one of the newly risen Skeletons/Zombies as your champion. It gets temporary hit points equal to your charisma modifier + your necromancer level, loses all damage vulnerabilities, and its strength and constitution become equal to your charisma. It remains your champion until your next long rest or until it dies. Your champion remains under your control if you fall unconscious, and is released upon your death."
+        },
+        {
+          "name": "Breath of Life",
+          "description": "Beginning at the 10th level, you can use your Life Drain on your champion. Doing so heals them instead of damaging them, and any excess healing is added to their current temporary hit points. Using Life Drain in this way does not grant you any temporary hit points. On the champion's next attack before your next turn, they deal extra necrotic damage equal to your charisma modifier."
+        },
+        {
+          "name": "Death's Champion",
+          "description": "Beginning at the 14th level, you learn to imbue greater power into your champion. When they are risen and declared your champion, they gain the use of Vampiric Touch 3x a day (once at 3rd level, once at 4th level, once at 5th level). You now have a telepathic link with your champion that you can activate as an action on your turn. The link allows you to see through their eyes. While the bond is active you and your champion are immune to being charmed or frightened, your champion can issue your commands to your other undead allies as a bonus action on its turn in your stead, and your champion is immune to Turn Undead and Destroy Undead."
         }
       ]
     }
