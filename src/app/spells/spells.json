@@ -545,6 +545,109 @@
       "spells_known": 13
     }]
   }, {
+    "ability_id": 32,
+    "can_cast_cantrips": true,
+    "can_cast_rituals": true,
+    "can_learn_extra_spells": true,
+    "can_use_magic_focus": true,
+    "id": 9999,
+    "must_learn_spells": true,
+    "must_prepare_spells": true,
+    "name": "necromancer",
+    "slug": "necromancer",
+    "sources_rels": [{
+      "page": 112,
+      "source_id": 12
+    }],
+    "spec_at_level": 2,
+    "specializations_ids": [312, 322, 332, 342, 352, 362, 372, 382, 522, 742],
+    "spell_list_id": 72,
+    "spellcaster_type_id": 2,
+    "spells_ids": [72, 102, 152, 162, 172, 232, 292, 322, 342, 362, 432, 452, 472, 502, 522, 542, 552, 582, 602, 702, 712, 802, 822, 872, 892, 932, 942, 952, 962, 972, 992, 1002, 1132, 1152, 1162, 1212, 1232, 1262, 1272,
+      1292, 1302, 1352, 1452, 1502, 1512, 1542, 1702, 1722, 1802, 1812, 1822, 1872, 1922, 1932, 2022, 2042, 2102, 2122, 2282, 2322, 2412, 2422, 2482, 2492, 2542, 2572, 2602, 2672, 2682, 2692, 2722, 2732, 2742, 2772, 2782, 2842, 2972, 2982, 3002, 3012, 3032, 3062, 3132, 3212, 3422, 3462,
+      3532, 3572, 3612, 3622, 3762, 3782, 3812, 4062, 4082, 4092, 4102, 4152, 4192, 4202, 4282, 4302, 4312, 4362, 4372, 4422, 4442, 4462, 4552],
+    "class_levels": [{
+      "cantrips_known": 3,
+      "level": 1,
+      "spells_known": 6
+    }, {
+      "cantrips_known": 3,
+      "level": 2,
+      "spells_known": 8
+    }, {
+      "cantrips_known": 3,
+      "level": 3,
+      "spells_known": 10
+    }, {
+      "cantrips_known": 4,
+      "level": 4,
+      "spells_known": 12
+    }, {
+      "cantrips_known": 4,
+      "level": 5,
+      "spells_known": 14
+    }, {
+      "cantrips_known": 4,
+      "level": 6,
+      "spells_known": 16
+    }, {
+      "cantrips_known": 4,
+      "level": 7,
+      "spells_known": 18
+    }, {
+      "cantrips_known": 4,
+      "level": 8,
+      "spells_known": 20
+    }, {
+      "cantrips_known": 4,
+      "level": 9,
+      "spells_known": 22
+    }, {
+      "cantrips_known": 5,
+      "level": 10,
+      "spells_known": 24
+    }, {
+      "cantrips_known": 5,
+      "level": 11,
+      "spells_known": 26
+    }, {
+      "cantrips_known": 5,
+      "level": 12,
+      "spells_known": 28
+    }, {
+      "cantrips_known": 5,
+      "level": 13,
+      "spells_known": 30
+    }, {
+      "cantrips_known": 5,
+      "level": 14,
+      "spells_known": 32
+    }, {
+      "cantrips_known": 5,
+      "level": 15,
+      "spells_known": 34
+    }, {
+      "cantrips_known": 5,
+      "level": 16,
+      "spells_known": 36
+    }, {
+      "cantrips_known": 5,
+      "level": 17,
+      "spells_known": 38
+    }, {
+      "cantrips_known": 5,
+      "level": 18,
+      "spells_known": 40
+    }, {
+      "cantrips_known": 5,
+      "level": 19,
+      "spells_known": 42
+    }, {
+      "cantrips_known": 5,
+      "level": 20,
+      "spells_known": 44
+    }]
+  }, {
     "ability_id": 2,
     "can_cast_cantrips": false,
     "can_cast_rituals": false,
