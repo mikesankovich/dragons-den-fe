@@ -7,7 +7,7 @@ import blog from './blog.json';
   styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent implements OnInit {
-  blog = {}
+  blog: any = {}
   constructor() { }
 
   ngOnInit() {

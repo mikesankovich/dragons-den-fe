@@ -7,8 +7,8 @@ import { ApiService } from '../api.service';
   styleUrls: ['./spell-card.component.scss']
 })
 export class SpellCardComponent implements OnInit {
-  @Input() spell = {};
-  @Input() cardData;
+  @Input() spell: any;
+  @Input() cardData: any;
   @Input() shown = false;
   constructor(private api: ApiService) {
 
@@ -19,7 +19,7 @@ export class SpellCardComponent implements OnInit {
 
   showSpell() {
     this.shown = !this.shown;
-    this.api.post('http://localhost:3000/api/spells', {id: this.spell.id}).subscribe((e: any) => {
+    this.api.post('api/spells', {id: this.spell.id}).subscribe((e: any) => {
       this.spell = e;
     });
   }

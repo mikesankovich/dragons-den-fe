@@ -9,15 +9,15 @@ import { ApiService } from '../api.service';
   styleUrls: ['./spells.component.scss']
 })
 export class SpellsComponent implements OnInit {
-  SpellDetails;
+  SpellDetails: any;
   shown;
-  cardData;
+  cardData: any;
   spellsByLevel;
   hidden = [];
   selectedLevels = [];
   filterForm;
   constructor(private formBuilder: FormBuilder, private api: ApiService) {
-    this.api.get('http://localhost:3000/api/spells').subscribe((e: any) => {
+    this.api.get('api/spells').subscribe((e: any) => {
       this.spellsByLevel = e.spellsByLevel;
       const { classes, sources, spell_schools } = e;
       this.cardData = { classes, sources, spell_schools };
@@ -52,7 +52,11 @@ export class SpellsComponent implements OnInit {
 
   filterSpells() {
     const filters = { ...this.filterForm.value };
-    let filterBody = {};
+    const filterBody: any = {
+      levels: null,
+      class: null,
+      name: null
+    };
     if (filters.class) {
       filterBody.class = filters.class;
     }
@@ -64,7 +68,7 @@ export class SpellsComponent implements OnInit {
       filterBody.levels = this.selectedLevels;
     }
 
-    this.api.post('http://localhost:3000/api/spells/filter', filterBody).subscribe((e: any) => {
+    this.api.post('api/spells/filter', filterBody).subscribe((e: any) => {
       this.spellsByLevel = e;
     });
   }

@@ -13,7 +13,7 @@ export class RaceComponent implements OnInit {
     const url = router.url.split('/');
     const name = url[url.length - 1];
     const type = url[url.length - 2];
-    this.api.get(`http://localhost:3000/api/homebrew?type=${type}&name=${name}`).subscribe((e: any) => {
+    this.api.get(`api/homebrew?type=${type}&name=${name}`).subscribe((e: any) => {
       this.race = e;
     });
   }

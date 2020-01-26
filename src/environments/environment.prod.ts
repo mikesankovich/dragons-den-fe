@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl: 'https://evening-shelf-70611.herokuapp.com/'
 };
