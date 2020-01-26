@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-spell-card',
@@ -9,7 +10,7 @@ export class SpellCardComponent implements OnInit {
   @Input() spell = {};
   @Input() cardData;
   @Input() shown = false;
-  constructor() {
+  constructor(private api: ApiService) {
 
   }
 
@@ -18,6 +19,9 @@ export class SpellCardComponent implements OnInit {
 
   showSpell() {
     this.shown = !this.shown;
+    this.api.post('http://localhost:3000/api/spells', {id: this.spell.id}).subscribe((e: any) => {
+      this.spell = e;
+    });
   }
 
   spellLevelSuffix(level) {
@@ -29,31 +33,5 @@ export class SpellCardComponent implements OnInit {
       return 'nd';
     }
     return 'st';
-  }
-
-  spellSchool(id) {
-    return this.cardData.spell_schools.find(item => id === item.id).name.replace(
-        /\w\S*/g,
-        function(txt) {
-            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-        }
-    );
-  }
-
-  spellClasses(id) {
-    const found = this.cardData.classes.filter(e => e.spells_ids.includes(id));
-    return found.map(e => e.name.replace(
-        /\w\S*/g,
-        function(txt) {
-            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-        }
-    )).join(', ');
-  }
-
-  spellSources(rels) {
-    return rels.map(e => {
-      const source = this.cardData.sources.find(s => s.id === e.source_id);
-      return `${source.name} page ${e.page}`
-    }).join(', ');
   }
 }

@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="header">
+    <div class="publishDate">{{blog.publishDate}}</div>
+    <h1>{{blog.title}}</h1>
+    <p>{{blog.subtitle}}</p>
+  </div>
+  <div class="section" *ngFor="let section of blog.sections">
+    <h3>{{section.header}}</h3>
+    <p *ngFor="let content of section.content" [innerHTML]="content"></p>
+  </div>
+</div>

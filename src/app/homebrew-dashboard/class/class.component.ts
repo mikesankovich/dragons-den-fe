@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import necromancer from './classes/necromancer.json';
+import { ApiService } from '../../api.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-class',
   templateUrl: './class.component.html',
@@ -8,12 +10,22 @@ import necromancer from './classes/necromancer.json';
 export class ClassComponent implements OnInit {
   class;
   avg;
-  constructor() { }
+  constructor(private api: ApiService, private router: Router) {
+    const url = router.url.split('/');
+    const name = url[url.length - 1];
+    const type = url[url.length - 2];
+    this.api.get(`http://localhost:3000/api/homebrew?type=${type}&name=${name}`).subscribe((e: any) => {
+      this.class = e;
+      this.avg = Math.ceil((1 + this.class.hitDice) / 2); // hit dice avg
+    });
+  }
 
   ngOnInit() {
-    this.class = necromancer;
-    this.avg = Math.ceil((1 + this.class.hitDice) / 2); // hit dice avg
 
+  }
+
+  isArray(item) {
+    return Array.isArray(item);
   }
 
   spellLevelSuffix(level) {

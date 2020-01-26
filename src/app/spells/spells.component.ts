@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, FormBuilder} from '@angular/forms';
 import * as _ from 'lodash';
-
-import SpellDetails from './spells.json';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-spells',
@@ -13,34 +12,25 @@ export class SpellsComponent implements OnInit {
   SpellDetails;
   shown;
   cardData;
-  spellsOriginal;
-  spellsByLevel = [[],[],[],[],[],[],[],[],[],[]];
+  spellsByLevel;
   hidden = [];
   selectedLevels = [];
   filterForm;
-  constructor(private formBuilder: FormBuilder) {
-    this.SpellDetails = _.cloneDeep(SpellDetails);
-    this.spellsOriginal = _.cloneDeep(SpellDetails.spells);
-    const { classes, sources, spell_schools } = SpellDetails;
-    this.cardData = { classes, sources, spell_schools };
-    this.getSpellsByLevel(this.spellsOriginal);
+  constructor(private formBuilder: FormBuilder, private api: ApiService) {
+    this.api.get('http://localhost:3000/api/spells').subscribe((e: any) => {
+      this.spellsByLevel = e.spellsByLevel;
+      const { classes, sources, spell_schools } = e;
+      this.cardData = { classes, sources, spell_schools };
+    });
 
     this.filterForm = new FormGroup({
       class: new FormControl(''),
       name: new FormControl(''),
       specialization: new FormControl(''),
     });
-
-    this.onChanges();
   }
 
   ngOnInit() {}
-
-  onChanges() {
-    this.filterForm.valueChanges.subscribe(val => {
-      this.filterSpells(this.filterForm.value);
-    });
-  }
 
   selectLevel(level) {
     const idx = this.selectedLevels.indexOf(level);
@@ -60,33 +50,22 @@ export class SpellsComponent implements OnInit {
     }
   }
 
-  filterSpells(filters) {
-    let filteredSpells = _.cloneDeep(SpellDetails.spells);
+  filterSpells() {
+    const filters = { ...this.filterForm.value };
+    let filterBody = {};
     if (filters.class) {
-      const classSpellIds = this.SpellDetails.classes.find(e => e.id === filters.class).spells_ids;
-      filteredSpells = filteredSpells.filter(e => classSpellIds.includes(e.id));
+      filterBody.class = filters.class;
     }
-    // if (filters.specialization) {
-    //   const classSpellIds = this.SpellDetails.specializations.find(e => e.id === filters.specialization).spells_ids;
-    //   filteredSpells = filteredSpells.filter(e => classSpellIds.includes(e.id));
-    // }
     if (filters.name) {
-      filteredSpells = filteredSpells.filter(e => e.name.toLowerCase().includes(filters.name.toLowerCase()));
+      filterBody.name = filters.name
     }
-    if (filters.levels) {
-      // console.log(filters.levels)
-      // filteredSpells = filteredSpells.filter(e => e.name.toLowerCase().includes(filters.name.toLowerCase()));
-    }
-    this.getSpellsByLevel(filteredSpells);
-  }
 
-  getSpellsByLevel(spells) {
-    this.spellsByLevel = [[],[],[],[],[],[],[],[],[],[]];
-    spells.forEach(spell => {
-      this.spellsByLevel[spell.level].push(spell);
-    });
-    this.spellsByLevel.forEach((spellLevel) => {
-      spellLevel.sort((a, b) => a.name > b.name ? 1 : -1)
+    if (this.selectedLevels.length) {
+      filterBody.levels = this.selectedLevels;
+    }
+
+    this.api.post('http://localhost:3000/api/spells/filter', filterBody).subscribe((e: any) => {
+      this.spellsByLevel = e;
     });
   }
 

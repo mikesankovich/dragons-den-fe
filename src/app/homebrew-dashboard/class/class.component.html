@@ -1,4 +1,7 @@
-<div class="container">
+<div class="container" *ngIf="class">
+  <div class="container">
+    <a class="nav-link" routerLink="/homebrew">Back</a>
+  </div>
   <h1>{{class.title}}</h1>
   <p>{{class.classDescription}}</p>
 
@@ -64,17 +67,19 @@
           <td>{{spellLevelSuffix(row.level)}}</td>
           <td>+{{row.proficiency}}</td>
           <td>{{row.features}}</td>
-          <td>{{row.cantrips}}</td>
-          <td>{{row.spells}}</td>
-          <td>{{row.slots[0] || '--'}}</td>
-          <td>{{row.slots[1] || '--'}}</td>
-          <td>{{row.slots[2] || '--'}}</td>
-          <td>{{row.slots[3] || '--'}}</td>
-          <td>{{row.slots[4] || '--'}}</td>
-          <td>{{row.slots[5] || '--'}}</td>
-          <td>{{row.slots[6] || '--'}}</td>
-          <td>{{row.slots[7] || '--'}}</td>
-          <td>{{row.slots[8] || '--'}}</td>
+          <td *ngIf="row.cantrips">{{row.cantrips}}</td>
+          <td *ngIf="row.blood_surges">{{row.blood_surges}}</td>
+          <td *ngIf="row.curse_dice">{{row.curse_dice}}</td>
+          <td *ngIf="row.spells">{{row.spells}}</td>
+          <td *ngIf="row.slots[0]">{{row.slots[0] || '--'}}</td>
+          <td *ngIf="row.slots[1]">{{row.slots[1] || '--'}}</td>
+          <td *ngIf="row.slots[2]">{{row.slots[2] || '--'}}</td>
+          <td *ngIf="row.slots[3]">{{row.slots[3] || '--'}}</td>
+          <td *ngIf="row.slots[4]">{{row.slots[4] || '--'}}</td>
+          <td *ngIf="row.slots[5]">{{row.slots[5] || '--'}}</td>
+          <td *ngIf="row.slots[6]">{{row.slots[6] || '--'}}</td>
+          <td *ngIf="row.slots[7]">{{row.slots[7] || '--'}}</td>
+          <td *ngIf="row.slots[8]">{{row.slots[8] || '--'}}</td>
         </tr>
       </tbody>
     </table>
@@ -82,7 +87,7 @@
   <div class="spellcasting">
     <h3>Spellcasting</h3>
     <p>{{class.spellCastingDescription}}</p>
-    <div class="feature">
+    <div class="feature" *ngIf="class.tableRows[0].cantrips">
       <h5>Cantrips</h5>
       <p>{{class.cantripsDescription}}</p>
     </div>
@@ -112,12 +117,21 @@
     </div>
     <div class="feature">
       <h5>Spellcasting Focus</h5>
-      <p>You can use an arcane focus as a spellcasting focus for your {{class.title}} spells.</p>
+      <p>{{class.focus}}</p>
     </div>
   </div>
   <div class="" *ngFor="let feature of class.classLevelFeatures">
     <h5>{{feature.name}}</h5>
-    <p>{{feature.description}}</p>
+    <div *ngIf="!isArray(feature.description)">
+      <p>{{feature.description}}</p>
+    </div>
+    <div *ngIf="isArray(feature.description)">
+      <p *ngFor="let desc of feature.description">{{desc}}</p>
+    </div>
+    <div *ngFor="let sub of feature.sub" class="sub-feature">
+      <h6><b>{{sub.header}}</b></h6>
+      <p>{{sub.detail}}</p>
+    </div>
   </div>
   <div class="">
     <h2>{{class.subClassName}}</h2>
@@ -127,6 +141,10 @@
         <div class="subclass-progressions feature" *ngFor="let prog of subclass.progressions">
           <h5>{{prog.name}}</h5>
           <p>{{prog.description}}</p>
+          <div class="sub-feature" *ngFor="let sub of prog.sub">
+            <h6><b>{{sub.header}}</b></h6>
+            <p>{{sub.detail}}</p>
+          </div>
         </div>
       </div>
     </div>

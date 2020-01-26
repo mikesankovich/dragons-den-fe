@@ -4,12 +4,12 @@
     <h3 class="spell-name-card">{{spell.name}}</h3>
     <span (click)="showSpell()" class="close">x</span>
     <div class="">
-      <span *ngIf="spell.level > 0">{{spell.level}}{{spellLevelSuffix(spell.level)}}-level {{spellSchool(spell.spell_school_id)}} spell</span>
-      <span *ngIf="spell.level === 0">{{spellSchool(spell.spell_school_id)}} Cantrip</span>
+      <span *ngIf="spell.level > 0">{{spell.level}}{{spellLevelSuffix(spell.level)}}-level {{spell.spellSchool}} spell</span>
+      <span *ngIf="spell.level === 0">{{spell.spellSchool}} Cantrip</span>
       <span *ngIf="spell.is_ritual"> (ritual)</span>
     </div>
     <div class="">
-      Classes: {{spellClasses(spell.id)}}
+      Classes: {{spell.classes}}
     </div>
     <ul>
       <li><b>Casting Time</b>:
@@ -29,6 +29,6 @@
       </li>
     </ul>
     <div class="" [innerHTML]="spell.description"></div>
-    <div class=""><b>Source</b>: {{spellSources(spell.sources_rels)}}</div>
+    <div class=""><b>Source</b>: {{spell.spellSources}}</div>
   </div>
 </div>

@@ -1,0 +1,38 @@
+<div class="container" *ngIf="race">
+  <div class="container">
+    <a class="nav-link" routerLink="/homebrew">Back</a>
+  </div>
+  <h1>{{race.title}}</h1>
+  <div class="quote">
+    <p *ngFor="let section of race.quote">{{section}}</p>
+  </div>
+  <div class="content" *ngFor="let section of race.description">
+    <h3 *ngIf="section.header">{{section.header}}</h3>
+    <p>{{section.detail}}</p>
+  </div>
+  <div class="content" *ngFor="let section of race.sections">
+    <h3>{{section.header}}</h3>
+    <p>{{section.detail}}</p>
+  </div>
+  <div class="content">
+    <h3>{{race.title}} Traits</h3>
+    <p>{{race.racialTraits.opener}}</p>
+    <div class="" *ngFor="let trait of race.racialTraits.traits">
+      <h5>{{trait.name}}:</h5>
+      <p>{{trait.detail}}</p>
+    </div>
+  </div>
+  <div class="content">
+    <h3>Subraces</h3>
+    <div *ngFor="let subrace of race.subRaces">
+      <h4>{{subrace.name}}:</h4>
+      <div class="section">
+        <p *ngFor="let description of subrace.description">{{description}}</p>
+        <div class="" *ngFor="let trait of subrace.traits">
+          <h5>{{trait.name}}:</h5>
+          <p>{{trait.detail}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

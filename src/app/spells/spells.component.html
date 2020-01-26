@@ -1,13 +1,13 @@
 
-<div class="container spell-list-container">
-  <form [formGroup]="filterForm">
+<div class="container spell-list-container" *ngIf="spellsByLevel">
+  <form [formGroup]="filterForm" (submit)="filterSpells()">
     <div class="form-group-inline">
       <label for="name-filter">Name</label>
-      <input formControlName="name" class="" id="name-filter" />
+      <input formControlName="name" class="form-control" id="name-filter" />
     </div>
     <div class="form-group-inline">
       <label for="class-filter">Class</label>
-      <select formControlName="class" class="" id="class-filter">
+      <select formControlName="class" class="form-control" id="class-filter">
         <option [ngValue]=''></option>
         <option *ngFor="let class of cardData.classes" [ngValue]="class.id">
           {{ class.name }}
@@ -18,9 +18,12 @@
       <label for="class-filter">Levels</label>
       <span *ngFor="let level of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]" (click)="selectLevel(level)" class="level" [ngClass]="{'selected-level': selectedLevels.includes(level)}"> {{level}} </span>
     </div>
+    <div class="form-group-inline">
+      <button type="submit" name="button" class="btn btn-primary">Filter Spells</button>
+    </div>
   </form>
   <div *ngFor="let levelSet of spellsByLevel; let i = index">
-    <div *ngIf="!selectedLevels.length || selectedLevels.includes(i)">
+    <div>
       <h2 class="spell-level" (click)="showLevel(i)" *ngIf="levelSet.length">{{spellLevelSuffix(i)}}</h2>
       <div class="" *ngIf="!hidden.includes(i)">
         <div *ngFor="let spell of levelSet">

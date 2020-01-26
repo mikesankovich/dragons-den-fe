@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BlogDashboardComponent } from './blog-dashboard/blog-dashboard.component';
 import { HomebrewDashboardComponent } from './homebrew-dashboard/homebrew-dashboard.component';
 import { ClassComponent } from './homebrew-dashboard/class/class.component';
+import { BlogComponent } from './blog-dashboard/blog/blog.component';
+import { RaceComponent } from './homebrew-dashboard/race/race.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +23,15 @@ import { ClassComponent } from './homebrew-dashboard/class/class.component';
     BlogDashboardComponent,
     HomebrewDashboardComponent,
     ClassComponent,
+    BlogComponent,
+    RaceComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
