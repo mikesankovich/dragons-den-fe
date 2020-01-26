@@ -1,0 +1,32 @@
+.calculator {
+  width: 480px;
+  .ability {
+    // margin-left: 2px;
+    // text-align: center;
+    label {
+      margin-left: 12px;
+    }
+    .stat-box {
+      width: 60px;
+      text-align: center;
+      border: 1px solid black;
+    }
+  }
+  .adjustors {
+    margin-left: 4px;
+    font-size: 18px;
+    span {
+      padding: 0 8px;
+      cursor: pointer;
+    }
+  }
+}
+
+.points {
+  border: 2px solid black;
+  width: 180px;
+  margin: 24px 0;
+  div {
+    margin: 12px;
+  }
+}

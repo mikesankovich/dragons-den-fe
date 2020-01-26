@@ -13,6 +13,7 @@ import { HomebrewDashboardComponent } from './homebrew-dashboard/homebrew-dashbo
 import { ClassComponent } from './homebrew-dashboard/class/class.component';
 import { BlogComponent } from './blog-dashboard/blog/blog.component';
 import { RaceComponent } from './homebrew-dashboard/race/race.component';
+import { PointAllocationComponent } from './homebrew-dashboard/miscellaneous/point-allocation/point-allocation.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { RaceComponent } from './homebrew-dashboard/race/race.component';
     ClassComponent,
     BlogComponent,
     RaceComponent,
+    PointAllocationComponent,
   ],
   imports: [
     BrowserModule,

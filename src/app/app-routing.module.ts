@@ -7,6 +7,7 @@ import { BlogComponent } from './blog-dashboard/blog/blog.component';
 import { HomebrewDashboardComponent } from './homebrew-dashboard/homebrew-dashboard.component';
 import { ClassComponent } from './homebrew-dashboard/class/class.component';
 import { RaceComponent } from './homebrew-dashboard/race/race.component';
+import { PointAllocationComponent } from './homebrew-dashboard/miscellaneous/point-allocation/point-allocation.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'homebrew', component: HomebrewDashboardComponent},
   {path: 'homebrew/classes/:id', component: ClassComponent},
   {path: 'homebrew/races/:id', component: RaceComponent},
+  {path: 'homebrew/miscellaneous/point-allocation', component: PointAllocationComponent},
 ];
 
 @NgModule({

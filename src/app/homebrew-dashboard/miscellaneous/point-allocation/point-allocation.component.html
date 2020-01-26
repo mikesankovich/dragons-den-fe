@@ -1,0 +1,61 @@
+<div class="container">
+  <h1>Point Allocation System</h1>
+  <p>A new point buy system for character creation. All stats start at 6, and you get 36 points to allocate as you see fit with the following rules:</p>
+  <ul>
+    <li>No stat can be above 16 before racial bonuses and ability score improvements are applied</li>
+    <li>Only two stats can be at 16 before racial bonuses and ability score improvements are applied</li>
+    <li>You apply racial bonuses and level-up ability score improvements after point allocation is finished</li>
+  </ul>
+  <div class="points">
+    <div>
+      Points Used: {{pointsAvailable.used}}
+    </div>
+    <div>
+      Points Available: {{pointsAvailable.available}}
+    </div>
+  </div>
+  <form class="calculator form-inline">
+    <div class="ability col-2">
+      <label for="STR">STR</label>
+      <div name="STR" id="STR" class="stat-box">{{points.STR}}</div>
+      <div class="adjustors">
+          <span (click)="adjust('+', 'STR')">+</span><span (click)="adjust('-', 'STR')">-</span>
+      </div>
+    </div>
+    <div class="ability col-2">
+      <label for="DEX">DEX</label>
+      <div name="DEX" id="DEX" class="stat-box">{{points.DEX}}</div>
+      <div class="adjustors">
+          <span (click)="adjust('+', 'DEX')">+</span><span (click)="adjust('-', 'DEX')">-</span>
+      </div>
+    </div>
+    <div class="ability col-2">
+      <label for="CON">CON</label>
+      <div name="CON" id="CON" class="stat-box">{{points.CON}}</div>
+      <div class="adjustors">
+          <span (click)="adjust('+', 'CON')">+</span><span (click)="adjust('-', 'CON')">-</span>
+      </div>
+    </div>
+    <div class="ability col-2">
+      <label for="INT">INT</label>
+      <div name="INT" id="INT" class="stat-box">{{points.INT}}</div>
+      <div class="adjustors">
+          <span (click)="adjust('+', 'INT')">+</span><span (click)="adjust('-', 'INT')">-</span>
+      </div>
+    </div>
+    <div class="ability col-2">
+      <label for="WIS">WIS</label>
+      <div name="WIS" id="WIS" class="stat-box">{{points.WIS}}</div>
+      <div class="adjustors">
+          <span (click)="adjust('+', 'WIS')">+</span><span (click)="adjust('-', 'WIS')">-</span>
+      </div>
+    </div>
+    <div class="ability col-2">
+      <label for="CHA">CHA</label>
+      <div name="CHA" id="CHA" class="stat-box">{{points.CHA}}</div>
+      <div class="adjustors">
+          <span (click)="adjust('+', 'CHA')">+</span><span (click)="adjust('-', 'CHA')">-</span>
+      </div>
+    </div>
+  </form>
+</div>
