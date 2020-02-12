@@ -8,11 +8,13 @@ import { HomebrewDashboardComponent } from './homebrew-dashboard/homebrew-dashbo
 import { ClassComponent } from './homebrew-dashboard/class/class.component';
 import { RaceComponent } from './homebrew-dashboard/race/race.component';
 import { PointAllocationComponent } from './homebrew-dashboard/miscellaneous/point-allocation/point-allocation.component';
+import { CTTRPGDashboardComponent } from './cttrpg-dashboard/cttrpg-dashboard.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
   {path: 'spells', component: SpellsComponent},
   {path: 'blog', component: BlogDashboardComponent},
+  {path: 'CTTRPG', component: CTTRPGDashboardComponent},
   {path: 'blog/blog', component: BlogComponent},
   {path: 'homebrew', component: HomebrewDashboardComponent},
   {path: 'homebrew/classes/:id', component: ClassComponent},

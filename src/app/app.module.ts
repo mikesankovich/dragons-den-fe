@@ -14,6 +14,7 @@ import { ClassComponent } from './homebrew-dashboard/class/class.component';
 import { BlogComponent } from './blog-dashboard/blog/blog.component';
 import { RaceComponent } from './homebrew-dashboard/race/race.component';
 import { PointAllocationComponent } from './homebrew-dashboard/miscellaneous/point-allocation/point-allocation.component';
+import { CTTRPGDashboardComponent } from './cttrpg-dashboard/cttrpg-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { PointAllocationComponent } from './homebrew-dashboard/miscellaneous/poi
     BlogComponent,
     RaceComponent,
     PointAllocationComponent,
+    CTTRPGDashboardComponent,
   ],
   imports: [
     BrowserModule,

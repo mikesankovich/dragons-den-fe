@@ -1,0 +1,45 @@
+
+.title-box {
+  position: absolute;
+  text-align: center;
+  border-radius: 8px;
+  // width: 75%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  .title {
+    color: white;
+    font-size: 72px;
+    font-style: oblique;
+    font-variant: small-caps;
+    font-style: verdana;
+  }
+}
+
+.outer-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-image: url('/assets/cttrpg-header.jpg');
+  background-repeat: no-repeat;
+  background-position: 0 -150px;
+  background-size: cover;
+}
+
+@media only screen and (max-width: 740px) {
+  .title-box {
+    .title {
+      font-size: 36px;
+      color: black;
+    }
+
+  }
+  .outer-container {
+    background-size: 0 0;
+  }
+}
+
+.other-media {
+  list-style: none;
+}
